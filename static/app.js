@@ -124,12 +124,11 @@
   }
 
   function renderSectionBody(sec) {
-    const announce = renderPart("Анонс", sec.announce, "announce");
     const main = sec.body?.length
       ? `<div class="content sec-main">${renderBlocks(sec.body)}</div>`
       : "";
     const summary = renderPart("Резюме", sec.summary, "summary");
-    return `${announce}${main}${summary}`;
+    return `${main}${summary}`;
   }
 
   function mdPreview(text) {
@@ -234,9 +233,6 @@
           ? `<p class="sec-goal">${escapeHtml(sec.goal)}</p>`
           : "";
       const expandable = showBodies();
-      const announceHtml = expandable
-        ? renderPart("Анонс", sec.announce, "announce")
-        : "";
       const mainHtml =
         expandable && sec.body?.length
           ? `<div class="content sec-main">${renderBlocks(sec.body)}</div>`
@@ -267,7 +263,7 @@
                   </div>
                   <span class="chev" aria-hidden="true">▾</span>
                 </button>
-                <div class="sec-body">${announceHtml}${mainHtml}${stepsHtml}${summaryHtml}</div>`
+                <div class="sec-body">${mainHtml}${stepsHtml}${summaryHtml}</div>`
               : `<div class="sec-static">
                   <p class="sec-label">Практика дня ${sec.number}</p>
                   <h3 class="sec-title">${escapeHtml(sec.title)}</h3>
@@ -913,14 +909,13 @@
           title: `День ${dayNum} · Новый блок`,
           fullscreen: true,
           formClass: "form-quad",
-          previewNames: ["announce_md", "content_md", "situation_md", "summary_md"],
+          previewNames: ["content_md", "situation_md", "summary_md"],
           fieldsHtml:
             `<div class="quad-meta">` +
             field("title", "Название блока", "") +
             field("goal", "Цель блока", "", true, 2) +
             `</div>` +
             `<div class="quad-grid">` +
-            mdField("announce_md", "Анонс", "", 8) +
             mdField("content_md", "Основная часть", "", 8) +
             mdField("situation_md", "Ситуация", "**Ситуация N. Название**\n\n", 8) +
             mdField("summary_md", "Резюме", "", 8) +
@@ -931,7 +926,6 @@
               await api("POST", `/api/days/${dayNum}/blocks`, {
                 title: fd.get("title"),
                 goal: fd.get("goal"),
-                announce_md: fd.get("announce_md"),
                 body_md: joinBlockBody(fd.get("content_md"), fd.get("situation_md")),
                 summary_md: fd.get("summary_md"),
               })
@@ -949,14 +943,13 @@
           title: `День ${dayNum} · Блок ${num}. ${block.title || ""}`.trim(),
           fullscreen: true,
           formClass: "form-quad",
-          previewNames: ["announce_md", "content_md", "situation_md", "summary_md"],
+          previewNames: ["content_md", "situation_md", "summary_md"],
           fieldsHtml:
             `<div class="quad-meta">` +
             field("title", "Название блока", block.title) +
             field("goal", "Цель блока", block.goal, true, 2) +
             `</div>` +
             `<div class="quad-grid">` +
-            mdField("announce_md", "Анонс", block.announce_md || "", 8) +
             mdField("content_md", "Основная часть", parts.content_md || "", 8) +
             mdField("situation_md", "Ситуация", parts.situation_md || "", 8) +
             mdField("summary_md", "Резюме", block.summary_md || "", 8) +
@@ -966,7 +959,6 @@
               await api("PATCH", `/api/days/${dayNum}/blocks/${num}`, {
                 title: fd.get("title"),
                 goal: fd.get("goal"),
-                announce_md: fd.get("announce_md"),
                 body_md: joinBlockBody(fd.get("content_md"), fd.get("situation_md")),
                 summary_md: fd.get("summary_md"),
               })
@@ -996,14 +988,13 @@
           title: `День ${dayNum} · Практика${practice?.title ? `. ${practice.title}` : ""}`,
           fullscreen: true,
           formClass: "form-practice-edit",
-          previewNames: ["announce_md", "body_md", "summary_md"],
+          previewNames: ["body_md", "summary_md"],
           fieldsHtml:
             `<div class="quad-meta">` +
             field("title", "Название практики", practice?.title || "") +
             field("goal", "Цель практики", practice?.goal || "", true, 2) +
             `</div>` +
             `<div class="practice-edit-grid">` +
-            mdField("announce_md", "Анонс", practice?.announce_md || "", 8) +
             mdField("body_md", "Ввод / содержание практики", practice?.body_md || "", 8) +
             mdField("summary_md", "Резюме", practice?.summary_md || "", 8) +
             `</div>`,
@@ -1012,7 +1003,6 @@
               await api("PATCH", `/api/days/${dayNum}/practice`, {
                 title: fd.get("title"),
                 goal: fd.get("goal"),
-                announce_md: fd.get("announce_md"),
                 body_md: fd.get("body_md"),
                 summary_md: fd.get("summary_md"),
               })
