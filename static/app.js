@@ -786,7 +786,7 @@
     modalHandler = null;
     modalForm.innerHTML = "";
     modalForm.classList.remove("form-quad", "form-practice-edit");
-    modalBox.classList.remove("modal-wide", "modal-fullscreen");
+    modalBox.classList.remove("modal-wide", "modal-fullscreen", "modal-block-edit");
     if (previewTimer) clearTimeout(previewTimer);
   }
 
