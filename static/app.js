@@ -138,6 +138,11 @@
     return `<pre>${escapeHtml(text || "")}</pre>`;
   }
 
+  function renderGoalHtml(text, className) {
+    if (!text) return "";
+    return `<div class="${className}">${mdPreview(text)}</div>`;
+  }
+
   function showGoal() {
     return level !== "days";
   }
@@ -229,9 +234,7 @@
       // Шаги H4 — часть практики, не отдельный раздел дня наравне с блоками
       const steps = practiceStepsOf(sec);
       const goal =
-        showGoal() && sec.goal
-          ? `<p class="sec-goal">${escapeHtml(sec.goal)}</p>`
-          : "";
+        showGoal() && sec.goal ? renderGoalHtml(sec.goal, "sec-goal") : "";
       const expandable = showBodies();
       const mainHtml =
         expandable && sec.body?.length
@@ -274,9 +277,7 @@
     }
 
     const goal =
-      showGoal() && sec.goal
-        ? `<p class="sec-goal">${escapeHtml(sec.goal)}</p>`
-        : "";
+      showGoal() && sec.goal ? renderGoalHtml(sec.goal, "sec-goal") : "";
     const expandable = showBodies();
     const label =
       sec.kind === "block"
@@ -557,9 +558,7 @@
 
   function renderDayGoals(d, idx) {
     // Режим «Дни + Цели»: без accordion, цель видна сразу
-    const goal = d.goal
-      ? `<p class="day-goal">${escapeHtml(d.goal)}</p>`
-      : "";
+    const goal = d.goal ? renderGoalHtml(d.goal, "day-goal") : "";
     const tools = canEdit()
       ? `<div class="tool-bar">
           ${iconBtn("edit-day", "Изменить день", `data-day="${d.day}"`)}
@@ -578,9 +577,7 @@
 
   function renderDayToc(d, idx) {
     // Режим «Содержание»: структура видна сразу, без свернуть/развернуть
-    const goal = d.goal
-      ? `<p class="day-goal">${escapeHtml(d.goal)}</p>`
-      : "";
+    const goal = d.goal ? renderGoalHtml(d.goal, "day-goal") : "";
     const sections = d.sections.map((s) => renderSection(d, s)).join("");
     return `
       <article class="day day-flat day-toc" id="day-${d.day}" style="animation-delay:${idx * 30}ms">
@@ -599,9 +596,7 @@
     const isOpen = openDays.has(d.day);
     const open = isOpen ? " open" : "";
     const expanded = isOpen ? "true" : "false";
-    const goal = d.goal
-      ? `<p class="day-goal">${escapeHtml(d.goal)}</p>`
-      : "";
+    const goal = d.goal ? renderGoalHtml(d.goal, "day-goal") : "";
     const sections = d.sections.map((s) => renderSection(d, s)).join("");
 
     return `

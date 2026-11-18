@@ -488,6 +488,34 @@ html:not([data-theme="dark"]) .noir-switch {
   max-width: 62ch;
 }
 
+.day-goal > :first-child,
+.sec-goal > :first-child {
+  margin-top: 0;
+}
+
+.day-goal > :last-child,
+.sec-goal > :last-child {
+  margin-bottom: 0;
+}
+
+.day-goal p,
+.sec-goal p {
+  margin: 0.35em 0;
+}
+
+.day-goal ul,
+.day-goal ol,
+.sec-goal ul,
+.sec-goal ol {
+  margin: 0.35em 0;
+  padding-left: 1.25em;
+}
+
+.day-goal li,
+.sec-goal li {
+  margin: 0.2em 0;
+}
+
 .chev {
   flex: 0 0 auto;
   width: 2rem;
@@ -559,6 +587,7 @@ html:not([data-theme="dark"]) .noir-switch {
   font-size: 0.95rem;
   line-height: 1.5;
   font-family: var(--font-read);
+  text-align: left;
 }
 
 .sec-part {
