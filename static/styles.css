@@ -1101,6 +1101,12 @@ html:not([data-theme="dark"]) .noir-switch {
   width: min(980px, 100%);
 }
 
+.modal.modal-block-edit {
+  width: min(800px, 100%);
+  max-height: calc(100vh - 1.5rem);
+  height: auto;
+}
+
 .modal.modal-fullscreen {
   width: calc(100vw - 1.25rem);
   height: calc(100vh - 1.25rem);
