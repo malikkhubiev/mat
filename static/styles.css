@@ -1198,8 +1198,11 @@ html:not([data-theme="dark"]) .noir-switch {
 }
 
 .quad-grid .md-split {
-  min-height: 220px;
+  grid-template-columns: 800px 800px;
+  justify-content: start;
+  min-height: 280px;
   height: auto;
+  overflow-x: auto;
 }
 
 .practice-edit-grid .md-split {
@@ -1211,9 +1214,12 @@ html:not([data-theme="dark"]) .noir-switch {
 
 .quad-grid .md-source,
 .quad-grid .md-preview {
-  min-height: 220px;
-  max-height: 360px;
-  height: 220px;
+  width: 800px;
+  min-width: 800px;
+  max-width: 800px;
+  min-height: 280px;
+  max-height: 420px;
+  height: 320px;
   resize: vertical;
 }
 
@@ -1249,6 +1255,66 @@ html:not([data-theme="dark"]) .noir-switch {
   background: var(--paper-2);
 }
 
+/* Scrollbars in project style */
+.modal.modal-block-edit .modal-form,
+.quad-grid .md-source,
+.quad-grid .md-preview,
+.quad-grid .md-split {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 55%, var(--line))
+    color-mix(in srgb, var(--paper-2) 70%, transparent);
+}
+
+.modal.modal-block-edit .modal-form::-webkit-scrollbar,
+.quad-grid .md-source::-webkit-scrollbar,
+.quad-grid .md-preview::-webkit-scrollbar,
+.quad-grid .md-split::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.modal.modal-block-edit .modal-form::-webkit-scrollbar-track,
+.quad-grid .md-source::-webkit-scrollbar-track,
+.quad-grid .md-preview::-webkit-scrollbar-track,
+.quad-grid .md-split::-webkit-scrollbar-track {
+  background: color-mix(in srgb, var(--paper-2) 85%, var(--line));
+  border-radius: 999px;
+  margin: 4px;
+}
+
+.modal.modal-block-edit .modal-form::-webkit-scrollbar-thumb,
+.quad-grid .md-source::-webkit-scrollbar-thumb,
+.quad-grid .md-preview::-webkit-scrollbar-thumb,
+.quad-grid .md-split::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 45%, var(--ink-soft)),
+    color-mix(in srgb, var(--accent) 70%, var(--rule))
+  );
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--paper-2) 85%, var(--line));
+  background-clip: padding-box;
+}
+
+.modal.modal-block-edit .modal-form::-webkit-scrollbar-thumb:hover,
+.quad-grid .md-source::-webkit-scrollbar-thumb:hover,
+.quad-grid .md-preview::-webkit-scrollbar-thumb:hover,
+.quad-grid .md-split::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 60%, var(--ink-soft)),
+    color-mix(in srgb, var(--accent) 85%, var(--rule))
+  );
+  border-color: color-mix(in srgb, var(--paper-2) 70%, var(--line));
+}
+
+.modal.modal-block-edit .modal-form::-webkit-scrollbar-corner,
+.quad-grid .md-source::-webkit-scrollbar-corner,
+.quad-grid .md-preview::-webkit-scrollbar-corner,
+.quad-grid .md-split::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 .danger-submit {
   border-color: var(--danger-border) !important;
   color: var(--danger) !important;
@@ -1269,6 +1335,15 @@ html:not([data-theme="dark"]) .noir-switch {
   .md-split { grid-template-columns: 1fr; }
   .modal.modal-wide { width: min(520px, 100%); }
   .modal.modal-block-edit { width: min(100%, calc(100vw - 1rem)); }
+  .quad-grid .md-split {
+    grid-template-columns: min(800px, 100%);
+  }
+  .quad-grid .md-source,
+  .quad-grid .md-preview {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
   .modal.modal-fullscreen {
     width: calc(100vw - 0.5rem);
     height: calc(100vh - 0.5rem);
