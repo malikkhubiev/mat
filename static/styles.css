@@ -479,6 +479,10 @@ html:not([data-theme="dark"]) .noir-switch {
   line-height: 1.2;
 }
 
+.day-goal-wrap {
+  padding: 0 1.35rem 0.85rem;
+}
+
 .day-goal {
   margin: 0.65rem 0 0;
   color: var(--ink-soft);
@@ -486,6 +490,15 @@ html:not([data-theme="dark"]) .noir-switch {
   font-size: 1rem;
   line-height: 1.55;
   max-width: 62ch;
+  padding: 0;
+}
+
+.day-goal.content,
+.sec-goal.content {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  padding: 0;
 }
 
 .day-goal > :first-child,
@@ -582,12 +595,17 @@ html:not([data-theme="dark"]) .noir-switch {
 }
 
 .sec-goal {
-  margin: 0.45rem 0 0;
+  margin: 0.15rem 1rem 0.75rem;
   color: var(--ink-soft);
   font-size: 0.95rem;
   line-height: 1.5;
   font-family: var(--font-read);
   text-align: left;
+}
+
+.sec-static .sec-goal {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .sec-part {
