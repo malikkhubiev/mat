@@ -1743,7 +1743,3 @@ body.dnd-active * {
   display: block;
   padding: 0 1rem 1.1rem;
 }
-
-.field md-field{
-  margin-top: 50px !important;
-}
