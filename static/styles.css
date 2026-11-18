@@ -1173,7 +1173,11 @@ html:not([data-theme="dark"]) .noir-switch {
 .quad-grid {
   grid-template-columns: 1fr;
   grid-auto-rows: auto;
-  gap: 50px;
+  gap: 0.75rem;
+}
+
+.quad-grid .md-field + .md-field > label {
+  margin-top: 50px;
 }
 
 .practice-edit-grid {
