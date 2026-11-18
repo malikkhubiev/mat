@@ -140,7 +140,8 @@
 
   function renderGoalHtml(text, className) {
     if (!text) return "";
-    return `<div class="${className}">${mdPreview(text)}</div>`;
+    // class "content" — те же стили списков/абзацев, что у тела блоков
+    return `<div class="${className} content">${mdPreview(String(text))}</div>`;
   }
 
   function showGoal() {
