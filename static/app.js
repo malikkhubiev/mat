@@ -263,10 +263,10 @@
                   <div>
                     <p class="sec-label">Практика дня ${sec.number}</p>
                     <h3 class="sec-title">${escapeHtml(sec.title)}</h3>
-                    ${goal}
                   </div>
                   <span class="chev" aria-hidden="true">▾</span>
                 </button>
+                ${goal}
                 <div class="sec-body">${mainHtml}${stepsHtml}${summaryHtml}</div>`
               : `<div class="sec-static">
                   <p class="sec-label">Практика дня ${sec.number}</p>
@@ -302,10 +302,10 @@
                 <div>
                   <p class="sec-label">${label}</p>
                   <h3 class="sec-title">${escapeHtml(sec.title)}</h3>
-                  ${goal}
                 </div>
                 <span class="chev" aria-hidden="true">▾</span>
               </button>
+              ${goal}
               <div class="sec-body">${renderSectionBody(sec)}</div>`
             : `<div class="sec-static">
                 <p class="sec-label">${label}</p>
@@ -607,10 +607,10 @@
           <div>
             <p class="day-kicker">День ${d.day}</p>
             <h2 class="day-title">${escapeHtml(d.title)}</h2>
-            ${goal}
           </div>
           <span class="chev" aria-hidden="true">▾</span>
         </button>
+        ${goal ? `<div class="day-goal-wrap">${goal}</div>` : ""}
         <div class="day-body">${sections}</div>
       </article>`;
   }
