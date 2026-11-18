@@ -908,7 +908,7 @@
       if (act === "add-block") {
         openModal({
           title: `День ${dayNum} · Новый блок`,
-          fullscreen: true,
+          blockEdit: true,
           formClass: "form-quad",
           previewNames: ["content_md", "situation_md", "summary_md"],
           fieldsHtml:
@@ -942,7 +942,7 @@
         const parts = splitBlockBody(block.body_md || "");
         openModal({
           title: `День ${dayNum} · Блок ${num}. ${block.title || ""}`.trim(),
-          fullscreen: true,
+          blockEdit: true,
           formClass: "form-quad",
           previewNames: ["content_md", "situation_md", "summary_md"],
           fieldsHtml:
