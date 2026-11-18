@@ -1102,7 +1102,8 @@ html:not([data-theme="dark"]) .noir-switch {
 }
 
 .modal.modal-block-edit {
-  width: min(800px, 100%);
+  /* edit 800 + gap + preview 800 + padding */
+  width: min(1680px, calc(100vw - 1.25rem));
   max-height: calc(100vh - 1.5rem);
   height: auto;
 }
