@@ -849,6 +849,7 @@
     danger,
     wide,
     fullscreen,
+    blockEdit,
     formClass,
     previewNames,
   }) {
@@ -858,8 +859,12 @@
     if (formClass) modalForm.classList.add(formClass);
     modalSubmit.textContent = submitLabel || "Сохранить";
     modalSubmit.className = danger ? "ghost danger-submit" : "primary";
-    modalBox.classList.toggle("modal-wide", Boolean(wide) && !fullscreen);
-    modalBox.classList.toggle("modal-fullscreen", Boolean(fullscreen));
+    modalBox.classList.toggle("modal-block-edit", Boolean(blockEdit));
+    modalBox.classList.toggle(
+      "modal-wide",
+      Boolean(wide) && !fullscreen && !blockEdit
+    );
+    modalBox.classList.toggle("modal-fullscreen", Boolean(fullscreen) && !blockEdit);
     modalHandler = onSubmit;
     backdrop.hidden = false;
     (previewNames || []).forEach(wirePreview);
